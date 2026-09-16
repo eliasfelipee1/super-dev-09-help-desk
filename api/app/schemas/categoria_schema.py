@@ -1,0 +1,16 @@
+from pydantic import BaseModel, ConfigDict, Field
+
+
+
+class CategoriaCriar(BaseModel):
+    nome: str = Field(min_length=2, max_length=60, description="Nome unico da categoria")
+    descricao: str | None = Field(default=None, max_length=255, description="Descricao opcional")
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "nome": "Rede",
+                "descricao": "Problemas de conexao, wi-fi, VPN e cabeamento"
+            }
+        }
+    )
